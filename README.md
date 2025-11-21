@@ -16,7 +16,7 @@ Integriert Jellyseerr direkt in die Jellyfin Web-UI. Ermöglicht Film- und Serie
 1. Öffne Jellyfin Dashboard → Plugins → Repositories
 2. Füge folgende Repository-URL hinzu:
    ```
-   https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/main/manifest.json
+   https://raw.githubusercontent.com/Serekay/Request_Plugin/main/manifest.json
    ```
 3. Gehe zu "Katalog" und installiere "Requests Bridge (Jellyseerr)"
 4. Jellyfin neustarten
@@ -114,7 +114,7 @@ dotnet build -c Release
 ### Release erstellen
 
 ```powershell
-.\build-release.ps1 -Version "1.0.1.0"
+.\build-release.ps1 -Version "1.0.1"
 ```
 
 ## Lizenz

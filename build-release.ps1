@@ -2,7 +2,7 @@
 # Erstellt ZIP-Paket und aktualisiert manifest.json mit Checksum
 
 param(
-    [string]$Version = "1.0.0.0",
+    [string]$Version = "1.0.0",
     [string]$TargetAbi = "10.11.0.0"
 )
 
@@ -65,7 +65,7 @@ if ($ExistingVersion) {
         version = $Version
         changelog = "Update"
         targetAbi = $TargetAbi
-        sourceUrl = "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v$Version/$ZipName"
+        sourceUrl = "https://github.com/Serekay/Request_Plugin/releases/download/v$Version/$ZipName"
         checksum = $Hash
         timestamp = $Timestamp
     }
@@ -82,4 +82,4 @@ Write-Host "1. Commit & Push zu GitHub"
 Write-Host "2. GitHub Release erstellen mit Tag 'v$Version'"
 Write-Host "3. ZIP-Datei zum Release hochladen"
 Write-Host "4. manifest.json URL in Jellyfin hinzufügen:"
-Write-Host "   https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/main/manifest.json" -ForegroundColor Cyan
+Write-Host "   https://raw.githubusercontent.com/Serekay/Request_Plugin/main/manifest.json" -ForegroundColor Cyan
