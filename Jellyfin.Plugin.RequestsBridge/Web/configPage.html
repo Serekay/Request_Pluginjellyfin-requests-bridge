@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Requests Bridge</title>
+</head>
+<body>
+    <div id="RequestsBridgeConfigPage" data-role="page" class="page type-interior pluginConfigurationPage"
+         data-require="emby-input,emby-button,emby-checkbox">
+        <div data-role="content">
+            <div class="content-primary">
+                <form id="RequestsBridgeConfigForm">
+                    <div class="sectionTitleContainer flex align-items-center">
+                        <h2 class="sectionTitle">Requests Bridge Einstellungen</h2>
+                    </div>
+
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="txtJellyseerrBase">
+                            Jellyseerr URL
+                        </label>
+                        <input is="emby-input" type="text" id="txtJellyseerrBase"
+                               placeholder="http://192.168.178.37:5055" />
+                        <div class="fieldDescription">
+                            Die Basis-URL deiner Jellyseerr-Instanz (z.B. http://192.168.178.37:5055)
+                        </div>
+                    </div>
+
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="txtJellyseerrApiKey">
+                            Jellyseerr API-Key
+                        </label>
+                        <input is="emby-input" type="password" id="txtJellyseerrApiKey"
+                               placeholder="API-Key eingeben" />
+                        <div class="fieldDescription">
+                            Der API-Key von Jellyseerr. Diesen findest du in Jellyseerr unter Einstellungen → Allgemein.
+                            Der Key kann über <code>/plugins/requests/apikey</code> abgerufen werden (für Android TV App).
+                        </div>
+                    </div>
+
+                    <div>
+                        <button is="emby-button" type="submit" class="raised button-submit block">
+                            <span>Speichern</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="sectionTitleContainer flex align-items-center" style="margin-top: 2em;">
+                    <h2 class="sectionTitle">API-Endpunkte</h2>
+                </div>
+                <div class="fieldDescription">
+                    <p><strong>API-Key abrufen:</strong> <code>GET /plugins/requests/apikey</code></p>
+                    <p>Dieser Endpunkt gibt den konfigurierten Jellyseerr API-Key zurück. Nützlich für die Android TV App.</p>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            const RequestsBridgeConfig = {
+                pluginUniqueId: '1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01'
+            };
+
+            document.querySelector('#RequestsBridgeConfigPage')
+                .addEventListener('pageshow', function () {
+                    Dashboard.showLoadingMsg();
+                    ApiClient.getPluginConfiguration(RequestsBridgeConfig.pluginUniqueId)
+                        .then(function (config) {
+                            document.querySelector('#txtJellyseerrBase').value = config.JellyseerrBase || '';
+                            document.querySelector('#txtJellyseerrApiKey').value = config.JellyseerrApiKey || '';
+                            Dashboard.hideLoadingMsg();
+                        });
+                });
+
+            document.querySelector('#RequestsBridgeConfigForm')
+                .addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    Dashboard.showLoadingMsg();
+                    ApiClient.getPluginConfiguration(RequestsBridgeConfig.pluginUniqueId)
+                        .then(function (config) {
+                            config.JellyseerrBase = document.querySelector('#txtJellyseerrBase').value;
+                            config.JellyseerrApiKey = document.querySelector('#txtJellyseerrApiKey').value;
+                            ApiClient.updatePluginConfiguration(RequestsBridgeConfig.pluginUniqueId, config)
+                                .then(function () {
+                                    Dashboard.processPluginConfigurationUpdateResult();
+                                });
+                        });
+                    return false;
+                });
+        </script>
+    </div>
+</body>
+</html>

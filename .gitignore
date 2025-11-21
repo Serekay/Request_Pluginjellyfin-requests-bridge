@@ -1,0 +1,27 @@
+# Build outputs
+**/bin/
+**/obj/
+releases/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Claude Code
+.claude/
+
+# Temporary files
+tmp_*/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Notes/temp files
+*.txt
