@@ -117,6 +117,13 @@ dotnet build -c Release
 .\build-release.ps1 -Version "1.0.1"
 ```
 
+## Plugin-Struktur
+
+Die ZIP-Datei enthält:
+- `Jellyfin.Plugin.RequestsBridge.dll` - Plugin-DLL
+- `meta.json` - Plugin-Metadaten
+- `logo.png` - Plugin-Logo (wird in Jellyfin Dashboard angezeigt)
+
 ## Lizenz
 
 MIT
