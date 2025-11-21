@@ -1,20 +1,18 @@
-[
-  {
-    "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
-    "name": "Requests Bridge (Jellyseerr)",
-    "description": "Integriert Jellyseerr direkt in die Jellyfin Web-UI. Ermoeglicht Film- und Serienanfragen ohne die Jellyfin-Oberflaeche zu verlassen.",
-    "owner": "Serekay",
-    "category": "General",
-    "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/main/Jellyfin.Plugin.RequestsBridge/Web/logo.png",
-    "versions": [
-      {
-        "version": "1.0.0",
-        "changelog": "Erste Version mit Jellyseerr-Integration, API-Key Endpoint und verbesserter Navigation",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
-        "checksum": "363118e647d4e46f4ba5ac04b6f613e1",
-        "timestamp": "2025-11-21T21:00:55Z"
-      }
-    ]
-  }
-]
+﻿{
+    "guid":  "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
+    "name":  "Requests Bridge (Jellyseerr)",
+    "description":  "Integriert Jellyseerr direkt in die Jellyfin Web-UI. Ermoeglicht Film- und Serienanfragen ohne die Jellyfin-Oberflaeche zu verlassen.",
+    "owner":  "Serekay",
+    "category":  "General",
+    "imageUrl":  "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/main/Jellyfin.Plugin.RequestsBridge/Web/logo.png",
+    "versions":  [
+                     {
+                         "version":  "1.0.0",
+                         "changelog":  "Erste Version mit Jellyseerr-Integration, API-Key Endpoint und verbesserter Navigation",
+                         "targetAbi":  "10.11.0.0",
+                         "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
+                         "checksum":  "dd8dea208af1d59ae5c67a52f2bc0ef6",
+                         "timestamp":  "2025-11-21T21:13:20Z"
+                     }
+                 ]
+}

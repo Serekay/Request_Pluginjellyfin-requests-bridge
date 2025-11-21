@@ -14,7 +14,7 @@ Write-Host "Target ABI: $TargetAbi"
 
 # Pfade
 $ProjectDir = "$PSScriptRoot\Jellyfin.Plugin.RequestsBridge"
-$OutputDir = "$PSScriptRoot\releases"
+$OutputDir = "$PSScriptRoot\dist"
 $ReleaseDir = "$OutputDir\v$Version"
 $ZipName = "Jellyfin.Plugin.RequestsBridge.zip"
 $ZipPath = "$ReleaseDir\$ZipName"
