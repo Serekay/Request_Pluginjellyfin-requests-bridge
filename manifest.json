@@ -12,7 +12,7 @@
         "changelog": "Erste Version mit Jellyseerr-Integration, API-Key Endpoint und verbesserter Navigation",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
-        "checksum": "f2b541453177f32bf22b6b5598763475",
+        "checksum": "363118e647d4e46f4ba5ac04b6f613e1",
         "timestamp": "2025-11-21T21:00:55Z"
       }
     ]

@@ -1,5 +1,5 @@
 {
-  "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
+  "id": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
   "name": "Requests (Jellyseerr Bridge)",
   "description": "Integriert Jellyseerr direkt in die Jellyfin Web-UI. Ermoeglicht Film- und Serienanfragen ohne die Jellyfin-Oberflaeche zu verlassen.",
   "overview": "Jellyseerr Integration fuer Jellyfin",
@@ -7,5 +7,7 @@
   "category": "General",
   "version": "1.0.0.0",
   "targetAbi": "10.11.0.0",
+  "status": "Active",
+  "autoUpdate": true,
   "imagePath": "logo.png"
 }
