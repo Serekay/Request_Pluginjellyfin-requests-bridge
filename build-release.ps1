@@ -29,15 +29,15 @@ Write-Host "`n[2/4] Creating release folder..." -ForegroundColor Yellow
 if (Test-Path $ReleaseDir) { Remove-Item $ReleaseDir -Recurse -Force }
 New-Item -ItemType Directory -Path $ReleaseDir -Force | Out-Null
 
-# 3. ZIP erstellen (DLL + meta.json + logo.png)
+# 3. ZIP erstellen (DLL + meta.json + thumb.png)
 Write-Host "`n[3/4] Creating ZIP package..." -ForegroundColor Yellow
 $DllPath = "$ProjectDir\bin\Release\net9.0\Jellyfin.Plugin.RequestsBridge.dll"
 $MetaPath = "$ProjectDir\meta.json"
-$LogoPath = "$ProjectDir\Web\logo.png"
+$ThumbPath = "$ProjectDir\Web\thumb.png"
 
 if (-not (Test-Path $DllPath)) { throw "DLL not found: $DllPath" }
 if (-not (Test-Path $MetaPath)) { throw "meta.json not found: $MetaPath" }
-if (-not (Test-Path $LogoPath)) { throw "logo.png not found: $LogoPath" }
+if (-not (Test-Path $ThumbPath)) { throw "thumb.png not found: $ThumbPath" }
 
 # Temporärer Ordner für ZIP-Inhalt
 $TempDir = "$OutputDir\temp"
@@ -46,7 +46,7 @@ New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 
 # Dateien kopieren
 Copy-Item $DllPath $TempDir
-Copy-Item $LogoPath $TempDir
+Copy-Item $ThumbPath $TempDir
 
 # meta.json mit aktueller Version erstellen
 $Meta = Get-Content $MetaPath | ConvertFrom-Json
