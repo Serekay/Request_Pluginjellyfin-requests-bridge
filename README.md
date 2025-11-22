@@ -18,8 +18,9 @@ A Jellyfin plugin that integrates [Jellyseerr](https://github.com/Fallenbagel/je
    ```
    https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/manifest.json
    ```
-3. Go to **Catalog** and install **"Requests Bridge (Jellyseerr)"**
-4. Restart Jellyfin
+3. Maybe you need to restart your Jellyfin Server to see the plugin in Catalog
+4. Go to **Catalog** and install **"Requests Bridge (Jellyseerr)"**
+5. Restart Jellyfin
 
 ### Method 2: Manual Installation
 
@@ -39,7 +40,7 @@ After installation:
 3. Enter your Jellyseerr API Key (found in Jellyseerr → Settings → General)
 4. Click **Save**
 
-## API Endpoints
+## API Endpoints (Nice to know)
 
 | Endpoint | Description |
 |----------|-------------|
@@ -50,9 +51,36 @@ After installation:
 
 The plugin automatically injects the "Discover" button into Jellyfin's UI. However, most Docker images have a read-only web directory.
 
-### Option 1: Volume Mount (Recommended for Docker)
+### Unraid Setup
 
-For **linuxserver/jellyfin**, **binhex-jellyfin**, or similar images:
+For **binhex-jellyfin** or **linuxserver/jellyfin** on Unraid:
+
+1. Copy `index.html` from the container:
+   ```bash
+   docker cp jellyfin:/usr/share/jellyfin/web/index.html /mnt/user/appdata/jellyfin/custom-web/index.html
+   ```
+
+2. Add a new **Path** mapping in the Unraid Docker settings:
+   - **Container Path:** `/usr/share/jellyfin/web/index.html`
+   - **Host Path:** `/mnt/user/appdata/jellyfin/custom-web/index.html`
+   - **Access Mode:** Read/Write
+
+3. Restart the container
+
+The plugin will automatically patch the mounted `index.html` on startup.
+
+### Docker Compose
+
+```yaml
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    volumes:
+      - ./config:/config
+      - ./custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
+```
+
+### Generic Docker
 
 ```bash
 # 1. Copy index.html from container
@@ -63,19 +91,6 @@ docker cp jellyfin:/usr/share/jellyfin/web/index.html /path/to/appdata/jellyfin/
 
 # 3. Restart the container
 docker restart jellyfin
-```
-
-The plugin will automatically patch the mounted `index.html` on startup.
-
-### Option 2: Docker Compose
-
-```yaml
-services:
-  jellyfin:
-    image: jellyfin/jellyfin
-    volumes:
-      - ./config:/config
-      - ./custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
 ```
 
 ## Troubleshooting
