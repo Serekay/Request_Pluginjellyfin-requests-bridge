@@ -1,78 +1,73 @@
-# Jellyfin Requests Bridge Plugin
+# Jellyfin Requests Bridge
 
-Integriert Jellyseerr direkt in die Jellyfin Web-UI. Ermöglicht Film- und Serienanfragen ohne die Jellyfin-Oberfläche zu verlassen.
+A Jellyfin plugin that integrates [Jellyseerr](https://github.com/Fallenbagel/jellyseerr) directly into the Jellyfin web interface. Request movies and TV shows without leaving Jellyfin.
 
 ## Features
 
-- Jellyseerr als Overlay in Jellyfin eingebettet
-- "Wünsche"-Button in der Tab-Leiste und Sidebar
-- API-Key Endpoint für Android TV App Integration
-- Automatische index.html Injection (wenn Schreibrechte vorhanden)
+- Jellyseerr embedded as an overlay within Jellyfin
+- "Discover" button in the navigation bar and sidebar
+- API endpoint for external integrations (e.g., Android TV apps)
+- Automatic UI injection (when write permissions are available)
 
 ## Installation
 
-### Methode 1: Plugin-Repository (Empfohlen)
+### Method 1: Plugin Repository (Recommended)
 
-1. Öffne Jellyfin Dashboard → Plugins → Repositories
-2. Füge folgende Repository-URL hinzu:
+1. Open **Jellyfin Dashboard** → **Plugins** → **Repositories**
+2. Add the following repository URL:
    ```
-   https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/main/manifest.json
+   https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/manifest.json
    ```
-3. Gehe zu "Katalog" und installiere "Requests Bridge (Jellyseerr)"
-4. Jellyfin neustarten
+3. Go to **Catalog** and install **"Requests Bridge (Jellyseerr)"**
+4. Restart Jellyfin
 
-### Methode 2: Manuelle Installation
+### Method 2: Manual Installation
 
-1. Lade die neueste `Jellyfin.Plugin.RequestsBridge.zip` von den Releases herunter
-2. Entpacke in: `/config/data/plugins/RequestsBridge/`
-3. Jellyfin neustarten
+1. Download the latest `Jellyfin.Plugin.RequestsBridge.zip` from [Releases](https://github.com/Serekay/jellyfin-requests-bridge/releases)
+2. Extract to your Jellyfin plugins folder:
+   - Linux: `/var/lib/jellyfin/plugins/RequestsBridge/`
+   - Docker: `/config/data/plugins/RequestsBridge/`
+   - Windows: `%LOCALAPPDATA%\jellyfin\plugins\RequestsBridge\`
+3. Restart Jellyfin
 
-## Konfiguration
+## Configuration
 
-Nach der Installation:
+After installation:
 
-1. Dashboard → Plugins → Requests Bridge (Jellyseerr)
-2. Jellyseerr URL eintragen (z.B. `http://192.168.178.37:5055`)
-3. Jellyseerr API-Key eintragen (findest du in Jellyseerr → Settings → General)
-4. Speichern
+1. Go to **Dashboard** → **Plugins** → **Requests Bridge (Jellyseerr)**
+2. Enter your Jellyseerr URL (e.g., `http://192.168.1.100:5055`)
+3. Enter your Jellyseerr API Key (found in Jellyseerr → Settings → General)
+4. Click **Save**
 
-## API-Endpoints
+## API Endpoints
 
-| Endpoint | Beschreibung |
-|----------|--------------|
-| `GET /plugins/requests/apikey` | Gibt den konfigurierten API-Key zurück (für Android TV App) |
-| `GET /plugins/requests/proxy/*` | Proxy zu Jellyseerr |
+| Endpoint | Description |
+|----------|-------------|
+| `GET /plugins/requests/apikey` | Returns the configured API key (for external apps) |
+| `GET /plugins/requests/proxy/*` | Proxy requests to Jellyseerr |
 
-## Automatische vs. Manuelle Script-Injection
+## Docker Setup
 
-Das Plugin versucht automatisch, den "Wünsche"-Button in die Jellyfin-UI zu injizieren.
+The plugin automatically injects the "Discover" button into Jellyfin's UI. However, most Docker images have a read-only web directory.
 
-### Automatische Injection funktioniert wenn:
-- Jellyfin auf Windows läuft
-- Docker-Container mit beschreibbarem Web-Verzeichnis
+### Option 1: Volume Mount (Recommended for Docker)
 
-### Manuelle Schritte nötig bei:
-- Read-Only Docker-Container (Standard bei den meisten Images)
-
-### Unraid/Docker: Volume Mapping einrichten
-
-Für **binhex-jellyfin** oder **linuxserver/jellyfin**:
+For **linuxserver/jellyfin**, **binhex-jellyfin**, or similar images:
 
 ```bash
-# 1. index.html aus Container kopieren
-docker cp jellyfin:/usr/share/jellyfin/web/index.html /mnt/user/appdata/jellyfin/custom-web/index.html
+# 1. Copy index.html from container
+docker cp jellyfin:/usr/share/jellyfin/web/index.html /path/to/appdata/jellyfin/custom-web/index.html
 
-# 2. Volume Mapping in Docker-Einstellungen hinzufügen:
-#    Host: /mnt/user/appdata/jellyfin/custom-web/index.html
-#    Container: /usr/share/jellyfin/web/index.html
-#    Mode: rw
+# 2. Add volume mapping to your container:
+#    /path/to/appdata/jellyfin/custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
 
-# 3. Container neustarten
+# 3. Restart the container
+docker restart jellyfin
 ```
 
-Das Plugin patcht dann automatisch die gemountete index.html beim Start.
+The plugin will automatically patch the mounted `index.html` on startup.
 
-### Alternative: Docker Compose
+### Option 2: Docker Compose
 
 ```yaml
 services:
@@ -83,27 +78,27 @@ services:
       - ./custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
 ```
 
-## Fehlerbehebung
+## Troubleshooting
 
-### "Wünsche"-Button erscheint nicht
+### "Discover" button doesn't appear
 
-1. Prüfe Jellyfin-Logs: Suche nach "RequestsBridge"
-2. Wenn "nicht beschreibbar" → Volume Mapping einrichten (siehe oben)
-3. Browser-Cache leeren (Ctrl+Shift+R)
+1. Check Jellyfin logs for "RequestsBridge" entries
+2. If logs show "not writable" → Set up volume mapping (see above)
+3. Clear browser cache (`Ctrl+Shift+R`)
 
-### Jellyseerr lädt nicht im Overlay
+### Jellyseerr doesn't load in overlay
 
-1. Prüfe ob Jellyseerr erreichbar ist
-2. Prüfe die URL in den Plugin-Einstellungen
-3. CORS-Probleme? Das Plugin proxied bereits alle Requests
+1. Verify Jellyseerr is accessible from the Jellyfin server
+2. Check the URL in plugin settings
+3. The plugin proxies all requests, so CORS issues should be handled automatically
 
-### API-Key Endpoint gibt leeren Key zurück
+### API key endpoint returns empty
 
-1. API-Key in Plugin-Einstellungen eintragen
-2. Speichern klicken
-3. Jellyfin muss NICHT neu gestartet werden
+1. Enter the API key in plugin settings
+2. Click Save
+3. No restart required
 
-## Entwicklung
+## Development
 
 ### Build
 
@@ -111,19 +106,12 @@ services:
 dotnet build -c Release
 ```
 
-### Release erstellen
+### Create Release
 
 ```powershell
 .\build-release.ps1 -Version "1.0.1"
 ```
 
-## Plugin-Struktur
-
-Die ZIP-Datei enthält:
-- `Jellyfin.Plugin.RequestsBridge.dll` - Plugin-DLL
-- `meta.json` - Plugin-Metadaten
-- `logo.png` - Plugin-Logo (wird in Jellyfin Dashboard angezeigt)
-
-## Lizenz
+## License
 
 MIT

@@ -19,9 +19,9 @@ namespace Jellyfin.Plugin.RequestsBridge
         private Task? _patchTask;
         private CancellationTokenSource? _cts;
 
-        private const string ScriptUrl   = "/plugins/requests/assets/requests-implementation.js";
+        private const string ScriptUrl = "/plugins/requests/assets/requests-implementation.js";
         private const string MarkerStart = "<!-- REQUESTS_BRIDGE_JS_START -->";
-        private const string MarkerEnd   = "<!-- REQUESTS_BRIDGE_JS_END -->";
+        private const string MarkerEnd = "<!-- REQUESTS_BRIDGE_JS_END -->";
 
         // Bekannte Pfade für verschiedene Docker-Images und Installationen
         private static readonly string[] IndexPaths =
@@ -99,7 +99,7 @@ namespace Jellyfin.Plugin.RequestsBridge
             }
 
             _log.LogWarning("RequestsBridge: Konnte index.html nicht automatisch patchen. " +
-                           "Das Plugin funktioniert trotzdem, aber der 'Wünsche'-Button wird nicht angezeigt. " +
+                           "Das Plugin funktioniert trotzdem, aber der 'Entdecken'-Button wird nicht angezeigt. " +
                            "Manuelles Patchen: Script-Tag in index.html einfügen oder Container mit beschreibbarem /jellyfin-web Volume starten.");
         }
 

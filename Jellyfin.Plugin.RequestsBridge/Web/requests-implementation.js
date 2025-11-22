@@ -138,13 +138,13 @@
         ov.style.display = 'block';
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
-        document.title = 'Wünsche';
+        document.title = 'Entdecken';
         activateTabButton(true);
 
         setTimeout(() => {
             const pageTitle = $('.pageTitle');
             if (pageTitle) {
-                pageTitle.textContent = 'Wünsche';
+                pageTitle.textContent = 'Entdecken';
             }
         }, 100);
     }
@@ -205,7 +205,7 @@
         const btn = document.createElement('button');
         btn.type = 'button'; btn.id = BTN_TAB_ID;
         btn.className = 'emby-tab-button emby-button';
-        btn.innerHTML = '<div class="emby-button-foreground">Wünsche</div>';
+        btn.innerHTML = '<div class="emby-button-foreground">Entdecken</div>';
         btn.style.cursor = 'pointer';
         btn.addEventListener('click', (e) => {
             e.preventDefault(); e.stopPropagation();
@@ -225,7 +225,7 @@
         const icon = $('span.material-icons', link);
         if (icon) { icon.textContent = 'playlist_add'; icon.classList.remove('home'); }
         const text = $('.navMenuOptionText', link);
-        if (text) { text.textContent = 'Wünsche'; }
+        if (text) { text.textContent = 'Entdecken'; }
 
         link.addEventListener('click', (e) => {
             e.preventDefault(); e.stopPropagation();
