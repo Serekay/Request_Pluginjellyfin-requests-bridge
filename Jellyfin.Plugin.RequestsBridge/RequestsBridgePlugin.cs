@@ -21,7 +21,7 @@ namespace Jellyfin.Plugin.RequestsBridge
         // Feste GUID – beibehalten
         public static readonly Guid PluginGuid = Guid.Parse("1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01");
 
-        public override string Name => "Requests (Jellyseerr Bridge)";
+        public override string Name => "Requests Bridge";
         public override string Description => "Embed Jellyseerr via internal proxy + inject global JS";
         public override Guid Id => PluginGuid;
 

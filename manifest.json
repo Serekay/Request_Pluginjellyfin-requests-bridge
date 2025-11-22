@@ -1,14 +1,22 @@
 [
   {
     "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
-    "name": "Requests Bridge (Jellyseerr)",
+    "name": "Requests Bridge",
     "description": "Integrates Jellyseerr directly into the Jellyfin web UI. Request movies and TV shows without leaving Jellyfin.",
     "owner": "Serekay",
     "category": "General",
     "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
     "versions": [
       {
-        "version": "1.0.3",
+        "version": "1.0.4.0",
+        "changelog": "Fixed auto-update functionality - name and version consistency",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.4/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "b20edea0f4cd894b5dac2b3bfb9c0794",
+        "timestamp": "2025-11-22T02:29:33Z"
+      },
+      {
+        "version": "1.0.3.0",
         "changelog": "Test update functionality",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.3/Jellyfin.Plugin.RequestsBridge.zip",
@@ -16,7 +24,7 @@
         "timestamp": "2025-11-22T02:18:53Z"
       },
       {
-        "version": "1.0.2",
+        "version": "1.0.2.0",
         "changelog": "Fixed plugin thumbnail display",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.2/Jellyfin.Plugin.RequestsBridge.zip",
@@ -24,7 +32,7 @@
         "timestamp": "2025-11-22T02:04:42Z"
       },
       {
-        "version": "1.0.1",
+        "version": "1.0.1.0",
         "changelog": "Updated documentation to English, improved README structure",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.1/Jellyfin.Plugin.RequestsBridge.zip",
@@ -32,7 +40,7 @@
         "timestamp": "2025-11-22T01:32:53Z"
       },
       {
-        "version": "1.0.0",
+        "version": "1.0.0.0",
         "changelog": "Initial release with Jellyseerr integration, API key endpoint, and improved navigation",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
