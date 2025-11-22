@@ -49,25 +49,20 @@ After installation:
 
 ## Docker Setup
 
-The plugin automatically injects the "Discover" button into Jellyfin's UI. However, most Docker images have a read-only web directory.
+The plugin automatically injects the "Discover" button into Jellyfin's UI. However, most Docker images have a read-only web directory. You need to make the web directory writable for the plugin to work.
 
-### Unraid Setup
+### Unraid
 
 For **binhex-jellyfin** or **linuxserver/jellyfin** on Unraid:
 
-1. Copy `index.html` from the container:
-   ```bash
-   docker cp jellyfin:/usr/share/jellyfin/web/index.html /mnt/user/appdata/jellyfin/custom-web/index.html
-   ```
-
-2. Add a new **Path** mapping in the Unraid Docker settings:
-   - **Container Path:** `/usr/share/jellyfin/web/index.html`
-   - **Host Path:** `/mnt/user/appdata/jellyfin/custom-web/index.html`
+1. Add a new **Path** mapping in the Unraid Docker settings:
+   - **Container Path:** `/usr/share/jellyfin/web`
+   - **Host Path:** `/mnt/user/appdata/jellyfin/custom-web`
    - **Access Mode:** Read/Write
 
-3. Restart the container
+2. Restart the container
 
-The plugin will automatically patch the mounted `index.html` on startup.
+The plugin will automatically patch `index.html` on startup.
 
 ### Docker Compose
 
@@ -77,21 +72,18 @@ services:
     image: jellyfin/jellyfin
     volumes:
       - ./config:/config
-      - ./custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
+      - ./custom-web:/usr/share/jellyfin/web:rw
 ```
 
 ### Generic Docker
 
-```bash
-# 1. Copy index.html from container
-docker cp jellyfin:/usr/share/jellyfin/web/index.html /path/to/appdata/jellyfin/custom-web/index.html
+Add a volume mapping for the web directory:
 
-# 2. Add volume mapping to your container:
-#    /path/to/appdata/jellyfin/custom-web/index.html:/usr/share/jellyfin/web/index.html:rw
-
-# 3. Restart the container
-docker restart jellyfin
 ```
+/path/to/custom-web:/usr/share/jellyfin/web:rw
+```
+
+Then restart the container. The plugin handles everything else automatically.
 
 ## Troubleshooting
 
