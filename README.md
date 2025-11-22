@@ -5,8 +5,9 @@ A Jellyfin plugin that integrates [Jellyseerr](https://github.com/Fallenbagel/je
 ## Features
 
 - Jellyseerr embedded as an overlay within Jellyfin
-- "Discover" button in the navigation bar and sidebar
-- API endpoint for external integrations (e.g., Android TV apps)
+- "Discover" button in the navigation bar and sidebar, working on Desktop & Mobile
+- Full Jellyseerr integration in the Android TV Jellyfin app with this plugin. 
+   - get it from: 🔗 GitHub: https://github.com/Serekay/jellyfin-jellyserr-tv
 - Automatic UI injection on plugin startup
 
 ## Installation
