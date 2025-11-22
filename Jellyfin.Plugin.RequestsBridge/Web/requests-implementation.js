@@ -1,15 +1,3 @@
-// Dieses JavaScript fügt in der Jellyfin-Weboberfläche einen Tab-Button
-// UND einen Sidebar-Menü-Link hinzu, der ein Overlay mit dem
-// Requests-Interface öffnet.
-//
-// VERSION 8 (Iframe-Navigation):
-// - Alle Funktionen von V7.
-// - GEÄNDERT: Zurück-Button navigiert jetzt innerhalb des iFrames zurück,
-//   anstatt direkt auf Home zu gehen. Nur wenn der iFrame auf der
-//   Startseite ist, wird auf Home navigiert.
-//
-// WICHTIG: Es muss als Javascript injected werden...
-
 (() => {
     const IF_SRC = '/plugins/requests/proxy/';
     const OV_ID = 'requests-overlay';
@@ -24,11 +12,18 @@
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+    // i18n - Get label based on browser/Jellyfin language
+    const getDiscoverLabel = () => {
+        const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        return lang.startsWith('de') ? 'Entdecken' : 'Discover';
+    };
+    const DISCOVER_LABEL = getDiscoverLabel();
+
     // ==========================================================
-    // Overlay anlegen
+    // Overlay creation
     // ==========================================================
     function ensureOverlay() {
-        // Style-Fix
+        // Style fix for sidebar scroll buttons
         if (!document.getElementById(SB_STYLE_ID)) {
             const s = document.createElement('style');
             s.id = SB_STYLE_ID;
@@ -71,7 +66,7 @@
                 const iframeDoc = iframeWin.document;
                 if (!iframeDoc || !iframeWin) return;
 
-                // 1. iFrame-Klick-Listener (Link-Fix für Jellyfin-Links)
+                // 1. iFrame click listener (link fix for Jellyfin links)
                 iframeDoc.addEventListener('click', (e) => {
                     const link = e.target.closest('a');
                     if (!link || !link.href) return;
@@ -98,7 +93,7 @@
     }
 
     // ---------- Iframe-Navigation ----------
-    // Versucht im iFrame zurück zu navigieren
+    // Try to navigate back in the iframe
     function tryIframeBack() {
         const frame = document.getElementById('requests-iframe');
         if (!frame) return false;
@@ -107,8 +102,8 @@
             const iframeWin = frame.contentWindow;
             if (!iframeWin) return false;
 
-            // Prüfe ob wir im iFrame zurück navigieren können
-            // Jellyseerr ist eine SPA, also prüfen wir die Location
+            // Check if we can navigate back in the iframe
+            // Jellyseerr is a SPA, so we check the location
             const iframePath = iframeWin.location.pathname + iframeWin.location.search;
             const isOnStartPage = iframePath === '/plugins/requests/proxy/' ||
                                   iframePath === '/plugins/requests/proxy' ||
@@ -116,15 +111,14 @@
                                   iframePath === '';
 
             if (isOnStartPage) {
-                // Wir sind auf der Startseite, also schließen wir das Overlay
                 return false;
             }
 
-            // Versuche zurück zu navigieren im iFrame
+            // Try to navigate back in the iframe
             iframeWin.history.back();
             return true;
         } catch (e) {
-            // Cross-origin - können nicht auf iFrame zugreifen
+            // Cross-origin - cannot access iframe
             return false;
         }
     }
@@ -138,13 +132,13 @@
         ov.style.display = 'block';
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
-        document.title = 'Entdecken';
+        document.title = DISCOVER_LABEL;
         activateTabButton(true);
 
         setTimeout(() => {
             const pageTitle = $('.pageTitle');
             if (pageTitle) {
-                pageTitle.textContent = 'Entdecken';
+                pageTitle.textContent = DISCOVER_LABEL;
             }
         }, 100);
     }
@@ -205,7 +199,7 @@
         const btn = document.createElement('button');
         btn.type = 'button'; btn.id = BTN_TAB_ID;
         btn.className = 'emby-tab-button emby-button';
-        btn.innerHTML = '<div class="emby-button-foreground">Entdecken</div>';
+        btn.innerHTML = `<div class="emby-button-foreground">${DISCOVER_LABEL}</div>`;
         btn.style.cursor = 'pointer';
         btn.addEventListener('click', (e) => {
             e.preventDefault(); e.stopPropagation();
@@ -225,7 +219,7 @@
         const icon = $('span.material-icons', link);
         if (icon) { icon.textContent = 'playlist_add'; icon.classList.remove('home'); }
         const text = $('.navMenuOptionText', link);
-        if (text) { text.textContent = 'Entdecken'; }
+        if (text) { text.textContent = DISCOVER_LABEL; }
 
         link.addEventListener('click', (e) => {
             e.preventDefault(); e.stopPropagation();

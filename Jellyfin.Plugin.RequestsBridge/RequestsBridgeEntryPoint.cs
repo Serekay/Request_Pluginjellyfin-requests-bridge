@@ -10,8 +10,8 @@ using Microsoft.Extensions.Logging;
 namespace Jellyfin.Plugin.RequestsBridge
 {
     /// <summary>
-    /// Automatischer Start nach Server-Boot, patcht die echte Client-Index mit Retries.
-    /// Implementiert IHostedService für Jellyfin 10.9+
+    /// Automatic start after server boot, patches the real client index with retries.
+    /// Implements IHostedService for Jellyfin 10.9+
     /// </summary>
     public sealed class RequestsBridgeEntryPoint : IHostedService, IDisposable
     {
@@ -23,18 +23,18 @@ namespace Jellyfin.Plugin.RequestsBridge
         private const string MarkerStart = "<!-- REQUESTS_BRIDGE_JS_START -->";
         private const string MarkerEnd = "<!-- REQUESTS_BRIDGE_JS_END -->";
 
-        // Bekannte Pfade für verschiedene Docker-Images und Installationen
+        // Known paths for various Docker images and installations
         private static readonly string[] IndexPaths =
         {
             // binhex-jellyfin
             "/usr/share/jellyfin/web/index.html",
             // linuxserver/jellyfin
             "/usr/lib/jellyfin/bin/jellyfin-web/index.html",
-            // Offizielle Jellyfin Docker
+            // Official Jellyfin Docker
             "/usr/share/webapps/jellyfin/web/index.html",
             // Native Linux Installation
             "/usr/share/jellyfin-web/index.html",
-            // Windows Installation (typisch)
+            // Windows Installation (typical)
             @"C:\Program Files\Jellyfin\Server\jellyfin-web\index.html",
             @"C:\ProgramData\Jellyfin\Server\jellyfin-web\index.html"
         };
@@ -71,7 +71,7 @@ namespace Jellyfin.Plugin.RequestsBridge
 
         private void PatchWithRetries(CancellationToken ct)
         {
-            const int maxAttempts = 60; // 30 Sekunden
+            const int maxAttempts = 60; // 30 seconds
             const int delayMs = 500;
 
             for (int i = 1; i <= maxAttempts && !ct.IsCancellationRequested; i++)
@@ -84,23 +84,23 @@ namespace Jellyfin.Plugin.RequestsBridge
                         return;
                     }
 
-                    if (i % 10 == 0) // Alle 5 Sekunden loggen
+                    if (i % 10 == 0) // Every 5 seconds log
                     {
-                        _log.LogDebug("RequestsBridge: Versuch {Attempt}/{Max} - warte auf index.html", i, maxAttempts);
+                        _log.LogDebug("RequestsBridge: Attempt {Attempt}/{Max} - waiting for index.html", i, maxAttempts);
                     }
                 }
                 catch (Exception ex)
                 {
-                    _log.LogWarning(ex, "RequestsBridge: Versuch {Attempt}/{Max} fehlgeschlagen", i, maxAttempts);
+                    _log.LogWarning(ex, "RequestsBridge: Attempt {Attempt}/{Max} failed", i, maxAttempts);
                 }
 
                 try { Task.Delay(delayMs, ct).Wait(ct); }
                 catch (OperationCanceledException) { return; }
             }
 
-            _log.LogWarning("RequestsBridge: Konnte index.html nicht automatisch patchen. " +
-                           "Das Plugin funktioniert trotzdem, aber der 'Entdecken'-Button wird nicht angezeigt. " +
-                           "Manuelles Patchen: Script-Tag in index.html einfügen oder Container mit beschreibbarem /jellyfin-web Volume starten.");
+            _log.LogWarning("RequestsBridge: Could not automatically patch index.html. " +
+                           "The plugin will still work, but the 'Discover' button will not be displayed. " +
+                           "Manual patch: insert the script tag into index.html or start the container with a writable /jellyfin-web volume.");
         }
 
         private bool TryPatchOnce(out string? patchedPath)
