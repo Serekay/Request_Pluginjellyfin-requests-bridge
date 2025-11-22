@@ -2,7 +2,7 @@
   {
     "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
     "name": "Requests Bridge",
-    "description": "This plugin integrates Jellyseerr into the Jellyfin interface as its own menu entry on desktop and mobile devices. Users can request movies and TV shows directly from Jellyfin, view the status of their requests, and manage requests without leaving the application. If my Jellyfin fork app is also installed on Your Anroid TV device (instructions in the Git repository), the entry will also appear directly on Android TV devices, allowing requests to be made conveniently from the TV. Supports seamless forwarding to Jellyseerr, status displays, and basic management functions.",
+    "description": "This plugin integrates Jellyseerr into the Jellyfin interface as its own menu entry on desktop and mobile devices. Users can request movies and TV shows directly from Jellyfin, view the status of their requests, and manage requests without leaving the application. If my Jellyfin fork app is also installed on Your Android TV device (instructions in the Git repository), the entry will also appear directly on Android TV devices, allowing requests to be made conveniently from the TV. Supports seamless forwarding to Jellyseerr, status displays, and basic management functions.",
     "overview": "Request movies and TV shows via Jellyseerr",
     "owner": "Serekay",
     "category": "General",
