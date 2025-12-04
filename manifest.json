@@ -9,6 +9,14 @@
     "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
     "versions": [
       {
+        "version": "1.0.5.0",
+        "changelog": "Improved target blank removal using MutationObserver for better mobile navigation",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.5/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "002fed3cbc93ea833ede8908c10194e9",
+        "timestamp": "2025-12-04T00:30:00Z"
+      },
+      {
         "version": "1.0.4.0",
         "changelog": "Fixed iframe target blank, add option to disable User Data for Collections",
         "targetAbi": "10.11.0.0",
