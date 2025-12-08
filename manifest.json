@@ -1,98 +1,93 @@
 [
-    {
-        "value":  [
-                      {
-                          "guid":  "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
-                          "name":  "Requests Bridge",
-                          "description":  "This plugin integrates Jellyseerr into the Jellyfin interface as its own menu entry on desktop and mobile devices. Users can request movies and TV shows directly from Jellyfin, view the status of their requests, and manage requests without leaving the application. If my Jellyfin fork app is also installed on Your Android TV device (instructions in the Git repository), the entry will also appear directly on Android TV devices, allowing requests to be made conveniently from the TV. Supports seamless forwarding to Jellyseerr, status displays, and basic management functions.",
-                          "overview":  "Request movies and TV shows via Jellyseerr",
-                          "owner":  "Serekay",
-                          "category":  "General",
-                          "imageUrl":  "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
-                          "versions":  [
-                                           {
-                                               "version":  "1.1.0.0",
-                                               "changelog":  "Add Tailscale Jellyseerr URL endpoint and configuration support",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.1.0/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "005e0389cfcaeac7d234c0b2fed7679d",
-                                               "timestamp":  "2025-12-08T14:11:05Z"
-                                           },
-                                           {
-                                               "version":  "1.0.8.0",
-                                               "changelog":  "Fixed native app detection to only trigger in actual native apps, not mobile browsers",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.8/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "f6f33fce2ec9cb7e35bf068ac4e5ad59",
-                                               "timestamp":  "2025-12-04T03:00:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.7.0",
-                                               "changelog":  "Native app detection - external links copy to clipboard instead of opening overlay",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.7/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "50c4d35693498dcde807df4f53f0aa6e",
-                                               "timestamp":  "2025-12-04T02:00:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.6.0",
-                                               "changelog":  "Fix external links opening in parent window for proper mobile navigation",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.6/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "253366bc5d38801c3ab552cab5a9513a",
-                                               "timestamp":  "2025-12-04T01:00:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.5.0",
-                                               "changelog":  "Improved target blank removal using MutationObserver for better mobile navigation",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.5/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "002fed3cbc93ea833ede8908c10194e9",
-                                               "timestamp":  "2025-12-04T00:30:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.4.0",
-                                               "changelog":  "Fixed iframe target blank, add option to disable User Data for Collections",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.4/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "756430f266117a81bb23d8faded59587",
-                                               "timestamp":  "2025-12-04T00:00:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.3.0",
-                                               "changelog":  "English/German language support for Discover label",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.3/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "064fb5b68bc4395305030fd94f177f9e",
-                                               "timestamp":  "2025-11-22T16:19:51Z"
-                                           },
-                                           {
-                                               "version":  "1.0.2.0",
-                                               "changelog":  "Add URL Endpoint for Jellyfin Android TV App",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.2/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "f8c8b025b44aba1f74bdccbd0f9c63e1",
-                                               "timestamp":  "2025-11-22T16:10:31Z"
-                                           },
-                                           {
-                                               "version":  "1.0.1.0",
-                                               "changelog":  "Updated plugin description",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.1/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "fd056d0a60c39337be670099c967df73",
-                                               "timestamp":  "2025-11-22T07:35:00Z"
-                                           },
-                                           {
-                                               "version":  "1.0.0.0",
-                                               "changelog":  "Initial commit",
-                                               "targetAbi":  "10.11.0.0",
-                                               "sourceUrl":  "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
-                                               "checksum":  "c94ce109509b9d0d2d3b59fe6206ac3d",
-                                               "timestamp":  "2025-11-22T07:22:00Z"
-                                           }
-                                       ]
-                      }
-                  ],
-        "Count":  1
-    }
+  {
+    "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
+    "name": "Requests Bridge",
+    "description": "This plugin integrates Jellyseerr into the Jellyfin interface as its own menu entry on desktop and mobile devices. Users can request movies and TV shows directly from Jellyfin, view the status of their requests, and manage requests without leaving the application. If my Jellyfin fork app is also installed on Your Android TV device (instructions in the Git repository), the entry will also appear directly on Android TV devices, allowing requests to be made conveniently from the TV. Supports seamless forwarding to Jellyseerr, status displays, and basic management functions.",
+    "overview": "Request movies and TV shows via Jellyseerr",
+    "owner": "Serekay",
+    "category": "General",
+    "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
+    "versions": [
+      {
+        "version": "1.1.0.0",
+        "changelog": "Add Tailscale Jellyseerr URL endpoint and configuration support",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.1.0/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "64bbb32f3a9836221f608b47e82b71bb",
+        "timestamp": "2025-12-08T14:13:00Z"
+      },
+      {
+        "version": "1.0.8.0",
+        "changelog": "Fixed native app detection to only trigger in actual native apps, not mobile browsers",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.8/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "f6f33fce2ec9cb7e35bf068ac4e5ad59",
+        "timestamp": "2025-12-04T03:00:00Z"
+      },
+      {
+        "version": "1.0.7.0",
+        "changelog": "Native app detection - external links copy to clipboard instead of opening overlay",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.7/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "50c4d35693498dcde807df4f53f0aa6e",
+        "timestamp": "2025-12-04T02:00:00Z"
+      },
+      {
+        "version": "1.0.6.0",
+        "changelog": "Fix external links opening in parent window for proper mobile navigation",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.6/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "253366bc5d38801c3ab552cab5a9513a",
+        "timestamp": "2025-12-04T01:00:00Z"
+      },
+      {
+        "version": "1.0.5.0",
+        "changelog": "Improved target blank removal using MutationObserver for better mobile navigation",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.5/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "002fed3cbc93ea833ede8908c10194e9",
+        "timestamp": "2025-12-04T00:30:00Z"
+      },
+      {
+        "version": "1.0.4.0",
+        "changelog": "Fixed iframe target blank, add option to disable User Data for Collections",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.4/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "756430f266117a81bb23d8faded59587",
+        "timestamp": "2025-12-04T00:00:00Z"
+      },
+      {
+        "version": "1.0.3.0",
+        "changelog": "English/German language support for Discover label",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.3/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "064fb5b68bc4395305030fd94f177f9e",
+        "timestamp": "2025-11-22T16:19:51Z"
+      },
+      {
+        "version": "1.0.2.0",
+        "changelog": "Add URL Endpoint for Jellyfin Android TV App",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.2/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "f8c8b025b44aba1f74bdccbd0f9c63e1",
+        "timestamp": "2025-11-22T16:10:31Z"
+      },
+      {
+        "version": "1.0.1.0",
+        "changelog": "Updated plugin description",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.1/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "fd056d0a60c39337be670099c967df73",
+        "timestamp": "2025-11-22T07:35:00Z"
+      },
+      {
+        "version": "1.0.0.0",
+        "changelog": "Initial commit",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.0.0/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "c94ce109509b9d0d2d3b59fe6206ac3d",
+        "timestamp": "2025-11-22T07:22:00Z"
+      }
+    ]
+  }
 ]

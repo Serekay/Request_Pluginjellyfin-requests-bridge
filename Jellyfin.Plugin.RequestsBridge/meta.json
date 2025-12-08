@@ -1,12 +1,12 @@
 {
     "category": "General",
-    "changelog": "Updated plugin description",
+    "changelog": "Add Tailscale Jellyseerr URL endpoint and configuration support",
     "description": "Integrates Jellyseerr directly into the Jellyfin web UI. Request movies and TV shows without leaving Jellyfin.",
     "guid": "1b7a3e7c-7c7c-43e0-9af0-7c7e8a2f2c01",
     "name": "Requests Bridge",
     "overview": "Jellyseerr integration for Jellyfin",
     "owner": "Serekay",
     "targetAbi": "10.11.0.0",
-    "timestamp": "2025-11-22T07:22:00Z",
-    "version": "1.0.1.0"
+    "timestamp": "2025-12-08T14:09:10Z",
+    "version": "1.1.0.0"
 }
