@@ -26,6 +26,18 @@
                     </div>
 
                     <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="txtTailscaleJellyseerrBase">
+                            Tailscale Jellyseerr URL
+                        </label>
+                        <input is="emby-input" type="text" id="txtTailscaleJellyseerrBase"
+                               placeholder="http://<tailscale-ip>:5055" />
+                        <div class="fieldDescription">
+                            Optional: A Jellyseerr URL reachable via Tailscale for remote devices (e.g., http://100.x.y.z:5055).
+                            This is returned via <code>/plugins/requests/tailscale/apibase</code>.
+                        </div>
+                    </div>
+
+                    <div class="inputContainer">
                         <label class="inputLabel inputLabelUnfocused" for="txtJellyseerrApiKey">
                             Jellyseerr API Key
                         </label>
@@ -65,6 +77,7 @@
                 </div>
                 <div class="fieldDescription">
                     <p><strong>Get Jellyseerr Base URL:</strong> <code>GET /plugins/requests/apibase</code></p>
+                    <p><strong>Get Tailscale Jellyseerr URL:</strong> <code>GET /plugins/requests/tailscale/apibase</code></p>
                     <p><strong>Get API Key:</strong> <code>GET /plugins/requests/apikey</code></p>
                     <p>This endpoint returns the configured Jellyseerr URL and API key. Useful for Android TV app.</p>
                 </div>
@@ -82,6 +95,7 @@
                     ApiClient.getPluginConfiguration(RequestsBridgeConfig.pluginUniqueId)
                         .then(function (config) {
                             document.querySelector('#txtJellyseerrBase').value = config.JellyseerrBase || '';
+                            document.querySelector('#txtTailscaleJellyseerrBase').value = config.TailscaleJellyseerrBase || '';
                             document.querySelector('#txtJellyseerrApiKey').value = config.JellyseerrApiKey || '';
                             document.querySelector('#chkDisableUserDataOnCollections').checked = config.DisableUserDataOnCollections || false;
                             Dashboard.hideLoadingMsg();
@@ -95,6 +109,7 @@
                     ApiClient.getPluginConfiguration(RequestsBridgeConfig.pluginUniqueId)
                         .then(function (config) {
                             config.JellyseerrBase = document.querySelector('#txtJellyseerrBase').value;
+                            config.TailscaleJellyseerrBase = document.querySelector('#txtTailscaleJellyseerrBase').value;
                             config.JellyseerrApiKey = document.querySelector('#txtJellyseerrApiKey').value;
                             config.DisableUserDataOnCollections = document.querySelector('#chkDisableUserDataOnCollections').checked;
                             ApiClient.updatePluginConfiguration(RequestsBridgeConfig.pluginUniqueId, config)

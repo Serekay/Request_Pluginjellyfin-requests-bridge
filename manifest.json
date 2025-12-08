@@ -9,6 +9,14 @@
     "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
     "versions": [
       {
+        "version": "1.1.0.0",
+        "changelog": "Add Tailscale Jellyseerr URL endpoint and configuration support",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.1.0/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "c92c893d015de3462baa7716860ff76f",
+        "timestamp": "2025-12-08T14:09:10Z"
+      },
+      {
         "version": "1.0.8.0",
         "changelog": "Fixed native app detection to only trigger in actual native apps, not mobile browsers",
         "targetAbi": "10.11.0.0",

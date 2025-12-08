@@ -53,6 +53,23 @@ public sealed class BridgeController : ControllerBase
         return Ok(new { success = true, apiBase });
     }
 
+    // ---------------- Jellyseerr Base Endpoint (Tailscale) ----------------
+    /// <summary>
+    /// Gibt die konfigurierte Jellyseerr Basis-URL für Tailscale zurück.
+    /// Hilfreich für die Android TV App im Tailscale-Netz.
+    /// </summary>
+    [HttpGet]
+    [Route("plugins/requests/tailscale/apibase")]
+    public IActionResult GetTailscaleApiBase()
+    {
+        var apiBase = Config.TailscaleJellyseerrBase;
+        if (string.IsNullOrWhiteSpace(apiBase))
+        {
+            return Ok(new { success = false, message = "Tailscale Jellyseerr Base URL not configured", apiBase = "" });
+        }
+        return Ok(new { success = true, apiBase });
+    }
+
     // ---------------- UI ----------------
     [HttpGet]
     [Route("plugins/requests/ui")]
