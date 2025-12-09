@@ -9,6 +9,14 @@
     "imageUrl": "https://raw.githubusercontent.com/Serekay/jellyfin-requests-bridge/master/Jellyfin.Plugin.RequestsBridge/Web/thumb.png",
     "versions": [
       {
+        "version": "1.2.1.0",
+        "changelog": "Update Tailscale Jellyfin URL placeholder to include http://",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/Serekay/jellyfin-requests-bridge/releases/download/v1.2.1/Jellyfin.Plugin.RequestsBridge.zip",
+        "checksum": "fa6483e4efefbdb38a11854414f819ec",
+        "timestamp": "2025-12-09T03:30:00Z"
+      },
+      {
         "version": "1.2.0.0",
         "changelog": "Add Tailscale Jellyfin URL endpoint and configuration support",
         "targetAbi": "10.11.0.0",
