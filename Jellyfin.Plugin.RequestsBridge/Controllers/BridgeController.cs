@@ -104,6 +104,50 @@ public sealed class BridgeController : ControllerBase
         return Ok(new { success = true, jellyfinBase });
     }
 
+    // ---------------- Jellyfin URL Redirect (Emby-style to Jellyfin-style) ----------------
+    /// <summary>
+    /// Redirects old Emby/Jellyseerr-style URLs to new Jellyfin URLs.
+    /// Jellyseerr generates: /web/index.html#/item?id=xxx&context=home&serverId=xxx
+    /// Jellyfin expects:     /web/#/details?id=xxx&serverId=xxx
+    /// </summary>
+    [HttpGet]
+    [Route("web/index.html")]
+    public IActionResult RedirectEmbyStyleUrl()
+    {
+        // The fragment (#/item?...) is not sent to the server, so we return a page
+        // that reads the fragment client-side and redirects to the correct URL
+        var html = @"<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            var hash = window.location.hash || '';
+            // Check if it's an old-style /item URL
+            if (hash.startsWith('#/item?')) {
+                var params = new URLSearchParams(hash.substring(7));
+                var id = params.get('id');
+                var serverId = params.get('serverId');
+                if (id) {
+                    var newUrl = '/web/#/details?id=' + id;
+                    if (serverId) newUrl += '&serverId=' + serverId;
+                    window.location.replace(newUrl);
+                    return;
+                }
+            }
+            // Fallback: redirect to home
+            window.location.replace('/web/');
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting to Jellyfin...</p>
+</body>
+</html>";
+        return Content(html, "text/html");
+    }
+
     // ---------------- UI ----------------
     [HttpGet]
     [Route("plugins/requests/ui")]
