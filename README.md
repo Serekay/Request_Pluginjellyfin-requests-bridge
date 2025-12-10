@@ -5,7 +5,7 @@ Jellyfin plugin that integrates [Jellyseerr](https://github.com/Fallenbagel/jell
 ## Features
 - **Discover Button** – Adds a "Discover" button to Jellyfin's navigation (desktop & mobile)
 - **Jellyseerr Overlay** – Opens Jellyseerr inside Jellyfin, no tab switching needed
-- **Android TV Support** – Works with [JellyArc-Jellyseerr-AndroidTv](https://github.com/Serekay/jellyarc-jellyserr-androidtv)
+- **Android TV Support** – Works with [JellyArc-Jellyseerr-AndroidTv](https://github.com/Serekay/jellyarc)
 - **Auto-Inject** – Automatically adds the client script to Jellyfin's `index.html` on startup
 - **VPN/Remote Access** – Optional Tailscale URL endpoints for accessing from outside your network
 - **Performance Option** – Disable user data on Collections if they load slowly
