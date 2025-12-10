@@ -9,6 +9,41 @@ Jellyfin plugin that integrates [Jellyseerr](https://github.com/Fallenbagel/jell
 - Auto-inject: adds the client script into `index.html` at startup
 - Optional Tailscale Jellyseerr URL endpoint for remote access
 
+## Mobile: Use as Web App (recommended)
+
+The native Jellyfin apps for iOS and Android cannot properly display external links (e.g. to TMDB, IMDb). **Solution:** Open Jellyfin in your browser and add it to your home screen as a web app. It works just like a native app – fullscreen mode, dedicated icon, no installation required.
+
+<details>
+<summary>iPhone / iPad (Safari)</summary>
+
+1. Open **Safari** and navigate to your Jellyfin URL
+2. Tap the **Share button** (square with arrow pointing up)
+3. Scroll down and select **"Add to Home Screen"**
+4. Enter a name (e.g. "Jellyfin") and tap **"Add"**
+
+> **Note:** Only Safari can add web apps to the home screen. Chrome, Firefox etc. don't support this on iOS.
+
+</details>
+
+<details>
+<summary>Android (Chrome)</summary>
+
+1. Open **Chrome** and navigate to your Jellyfin URL
+2. Tap the **three-dot menu** (top right)
+3. Select **"Add to Home screen"** or **"Install app"**
+4. Enter a name and tap **"Add"**
+
+> **Tip:** If "Install app" appears, choose that option – Jellyfin will be installed as a full web app.
+
+</details>
+
+### Benefits
+- Fullscreen mode without browser address bar
+- Dedicated app icon on your home screen
+- External links (TMDB, IMDb etc.) work properly
+- No app store installation needed
+- Always up to date
+
 ## Installation Guide
 The plugin injects a script tag into Jellyfin’s `index.html`. Many Docker images mount the web directory read-only, so write access is required. Choose one method:
 
