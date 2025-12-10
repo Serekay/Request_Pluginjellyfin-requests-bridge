@@ -169,7 +169,7 @@ These settings are only needed if you access Jellyfin from outside your home net
 
 **When do you need this?**
 - You use Tailscale (or another VPN) to access your server remotely
-- You use the [Android TV app](https://github.com/Serekay/jellyarc-jellyserr-androidtv) outside your home network
+- You use the [Android TV app](https://github.com/Serekay/jellyarc) outside your home network
 - The Android TV app uses these URLs to switch between local and remote connections
 
 ### Performance Settings (Optional)
